@@ -11,6 +11,7 @@ import com.cos.board.Action.Action;
 import com.cos.board.Model.Board;
 import com.cos.board.dao.BoardDao;
 import com.cos.board.util.Script;
+import com.cos.board.viewmodel.BoardUserVM;
 
 public class BoardDetailAction implements Action {
 
@@ -28,11 +29,11 @@ public class BoardDetailAction implements Action {
 		
 		int id = Integer.parseInt(req.getParameter("id"));
 		BoardDao boardDao = BoardDao.getInstance();
-		Board board = boardDao.findById(id);
+		BoardUserVM buVM = boardDao.findById(id);
 		
-		System.out.println("DetailAction:"+board.getId());
-		if(board != null) {
-			req.setAttribute("board", board);
+//		System.out.println("DetailAction:"+buVM.toString());
+		if(buVM != null) {
+			req.setAttribute("buVM", buVM);
 			RequestDispatcher dis = req.getRequestDispatcher("/board/detail.jsp");
 			dis.forward(req, resp);
 		}

@@ -3,7 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
 <title>Yndg Blog Example</title>
 <meta charset="utf-8">
@@ -16,7 +16,11 @@
 	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+
+<link rel="stylesheet" href="../css/detail.css" />
+
 </head>
+
 <body>
 
 	<nav class="navbar navbar-expand-md bg-dark navbar-dark">
@@ -33,10 +37,10 @@
 					<c:when test="${not empty sessionScope.user}">
 						<li class="nav-item"><a class="nav-link"
 							href="/board?cmd=write">Post</a></li>
-							
+
 						<li class="nav-item"><a class="nav-link"
 							href="/user?cmd=profile">Profile</a></li>
-							
+
 						<li class="nav-item"><a class="nav-link"
 							href="/user?cmd=logout">Logout</a></li>
 					</c:when>
@@ -47,7 +51,7 @@
 							href="/user?cmd=login">Login</a></li>
 					</c:otherwise>
 				</c:choose>
-				
+
 			</ul>
 		</div>
 	</nav>

@@ -11,6 +11,7 @@ import java.util.List;
 import com.cos.board.DB.DBUtil;
 import com.cos.board.Model.Board;
 import com.cos.board.Model.User;
+import com.cos.board.viewmodel.BoardUserVM;
 
 // User Test
 public class BoardDao {
@@ -86,16 +87,16 @@ public class BoardDao {
 		return -1;
 	}
 
-	public int delete() {
+	public int delete(int id) {
 		// 1. Stream 연결
 		Connection conn = DBUtil.getConnection();
 		PreparedStatement pstmt = null;
 		try {
 			// 2. 쿼리 전송 클래스 (규약에 맞게)
-			final String SQL = "DELETE FROM user WHERE id = ?";
+			final String SQL = "DELETE FROM board WHERE id = ?";
 			pstmt = conn.prepareStatement(SQL);
 			// 3. SQL문 완성하기
-			pstmt.setInt(1, 2);
+			pstmt.setInt(1, id);
 			
 			// 4. SQL문 전송하기
 			//pstmt.executeQuery();
@@ -125,6 +126,7 @@ public class BoardDao {
 		ResultSet rs = null;
 		try {
 			// 2. 쿼리 전송 클래스 (규약에 맞게)
+//			final String SQL = "SELECT id, title, content, userId, createTime, %Y-%m-%d-%H-%i FROM board";
 			final String SQL = "SELECT * FROM board ORDER BY id DESC";
 			pstmt = conn.prepareStatement(SQL);
 			// 3. SQL문 완성하기
@@ -157,31 +159,40 @@ public class BoardDao {
 		return null;
 	}
 	
-	public Board findById(int id) {
+	public BoardUserVM findById(int id) {
 		// 1. Stream 연결
 		Connection conn = DBUtil.getConnection();
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		try {
+			StringBuffer sb = new StringBuffer();
+			sb.append("SELECT b.id, b.title, b.content, b.createTime, b.userId, u.username");
+			sb.append(" FROM board b inner join user u");
+			sb.append(" ON b.userid = u.id");
+			sb.append(" WHERE b.id =?"); //세미콜론 절대 금지, 끝에 띄어쓰기
+			
 			// 2. 쿼리 전송 클래스 (규약에 맞게)
-			final String SQL = "SELECT * FROM board WHERE id = ?";
+			final String SQL = sb.toString();
 			pstmt = conn.prepareStatement(SQL);
 			// 3. SQL문 완성하기
 			pstmt.setInt(1, id);
 			// 4. SQL문 전송하기
 			rs =pstmt.executeQuery();
-			Board board = null;
 			
+			BoardUserVM buVM = null;
 			if (rs.next()) {
-				String title = rs.getString("title");
-				String content = rs.getString("content");
-				int userId = rs.getInt("userId");
-				Timestamp createTime = rs.getTimestamp("createTime");
+				String title = rs.getString("b.title");
+				String content = rs.getString("b.content");
+				Timestamp createTime = rs.getTimestamp("b.createTime");
+				int userId = rs.getInt("b.userId");
+				String username = rs.getString("u.username");
 				 
-				board = new Board(id, title, content, userId, createTime);
+				Board board = new Board(id,title,content,userId, createTime);
+				User user = new User(userId, username, null, null, null);
+				buVM = new BoardUserVM(board, user);
 			}
-			System.out.println("BoardDao:"+board.getId());
-			return board;
+//			System.out.println("BoardDao:"+buVM.toString());
+			return buVM;
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
@@ -195,6 +206,45 @@ public class BoardDao {
 		}
 		return null;
 	}
+	
+//	public Board findById(int id) {
+//		// 1. Stream 연결
+//		Connection conn = DBUtil.getConnection();
+//		PreparedStatement pstmt = null;
+//		ResultSet rs = null;
+//		try {
+//			// 2. 쿼리 전송 클래스 (규약에 맞게)
+//			final String SQL = "SELECT * FROM board WHERE id = ?";
+//			pstmt = conn.prepareStatement(SQL);
+//			// 3. SQL문 완성하기
+//			pstmt.setInt(1, id);
+//			// 4. SQL문 전송하기
+//			rs =pstmt.executeQuery();
+//			Board board = null;
+//			
+//			if (rs.next()) {
+//				String title = rs.getString("title");
+//				String content = rs.getString("content");
+//				int userId = rs.getInt("userId");
+//				Timestamp createTime = rs.getTimestamp("createTime");
+//				 
+//				board = new Board(id, title, content, userId, createTime);
+//			}
+//			System.out.println("BoardDao:"+board.getId());
+//			return board;
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//		} finally {
+//			try {
+//				pstmt.close();
+//				rs.close();
+//				conn.close();
+//			} catch (SQLException e) {
+//				e.printStackTrace();
+//			}
+//		}
+//		return null;
+//	}
 	
 	public User login(String username, String password) {
 		// 1. Stream 연결
