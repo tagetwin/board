@@ -21,6 +21,15 @@ public class UserJoinProcAction implements Action {
 //		  (2) 함수 실행 save(username, password, email);
 //		  (3) return 값이 1일때 -> index.jsp
 //		  (4) return 값이 1이 아니면 -> 자바스크립트로 history.back();
+
+		if(
+				req.getParameter("username")== null ||
+				req.getParameter("password") == null ||
+				req.getParameter("email") == null
+		) {
+			resp.sendRedirect("/");
+			return;
+		}
 		
 //		1번
 		String username = req.getParameter("username");

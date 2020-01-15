@@ -6,7 +6,7 @@ public class BoardFactory {
 
 	public static Action route (String cmd) {
 	
-		if(cmd.equals("list")) {
+		if(cmd.equals("list") ||  cmd.equals("")) {
 			return new BoardListAction();
 		}else if(cmd.equals("delete")) {
 			return new BoardDeleteAction();
@@ -16,6 +16,8 @@ public class BoardFactory {
 			return new BoardUpdateAction();
 		}else if (cmd.equals("write")) {
 			return new BoardWriteAction();
+		}else if (cmd.equals("writeProc")) {
+			return new BoardWriteProcAction();
 		}
 		return null;	
 	}

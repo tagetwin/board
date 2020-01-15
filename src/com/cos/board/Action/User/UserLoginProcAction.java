@@ -28,8 +28,10 @@ public class UserLoginProcAction implements Action {
 //		  (4) return 값이 1이 아니면 -> 자바스크립트로 history.back();
 		
 //		1번
-		if(req.getParameter("username") == null ||
-				req.getParameter("password") == null)	 {
+		if(
+				req.getParameter("username") == null ||
+				req.getParameter("password") == null
+		  )	 {
 			resp.sendRedirect("/");
 			return; // resp 두번 되면 오류가 난다 
 		}
@@ -52,7 +54,7 @@ public class UserLoginProcAction implements Action {
 		User user = userDao.login(username, password);
 		
 		if(rememberMe.equals("on")) {
-			Cookie cookie = new Cookie("usernameCookie", user.getUsername());
+			Cookie cookie = new Cookie("usernameCookie", username);
 			cookie.setMaxAge(60*60*24*7); // 일주일 보관
 			resp.addCookie(cookie);
 		}else {

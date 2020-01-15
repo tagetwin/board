@@ -27,6 +27,7 @@ public class BoardController extends HttpServlet{
 		resp.setContentType("text/html; charset=utf-8");
 		
 		String cmd = req.getParameter("cmd");
+		if(cmd == null) cmd="";
 		Action action = BoardFactory.route(cmd);
 		action.execute(req, resp);
 		
