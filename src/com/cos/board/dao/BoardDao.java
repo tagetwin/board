@@ -1,10 +1,12 @@
 package com.cos.board.dao;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -33,7 +35,7 @@ public class BoardDao {
 		PreparedStatement pstmt = null;
 		try {
 			// 2. 쿼리 전송 클래스 (규약에 맞게)
-			final String SQL = "INSERT INTO board (title, content, userId, createTime) VALUES (?, ?, ?, now())";
+			final String SQL = "INSERT INTO board (title, content, userId, createTime) VALUES (?, ?, ?, date_format(now(), '%Y-%m-%d %k:%i'))";
 			pstmt = conn.prepareStatement(SQL);
 			// 3. SQL문 완성하기
 			pstmt.setString(1, title);
@@ -128,7 +130,8 @@ public class BoardDao {
 		ResultSet rs = null;
 		try {
 			// 2. 쿼리 전송 클래스 (규약에 맞게)
-//			final String SQL = "SELECT id, title, content, userId, date_format(createTime, '\''%Y.%m.%d %H:%i'\'') FROM board";
+//			final String SQL = "SELECT id, title, content, userId, date_format(createtime, '%Y-%m-%d %k:%i') createTime FROM board";
+//			final String SQL = "select id, title, content, userId, left(createtime, 16) createTime from board";
 			final String SQL = "SELECT * FROM board ORDER BY id DESC";
 			pstmt = conn.prepareStatement(SQL);
 			// 3. SQL문 완성하기
@@ -141,14 +144,18 @@ public class BoardDao {
 				String content = rs.getString("content");
 				int userId = rs.getInt("userId");
 				Timestamp createTime = rs.getTimestamp("createTime");
-				System.out.println(createTime);
+				
+//				String s = new SimpleDateFormat("yyyy/MM/dd HH:mm").format(createTime);
+//				System.out.println(s);
+//				System.out.println(s instanceof String);
+
 				Board board = Board.builder()
 						.id(id).title(title)
 						.content(content)
 						.userId(userId)
 						.createTime(createTime)
 						.build();
-
+				
 				boards.add(board);
 			}
 

@@ -5,7 +5,7 @@
 <%
 	request.setAttribute("phone", "010222");
 	session.setAttribute("phone", "0103333");
-	User user = new User(1, "love", "1234", "love@nate.com", null);
+	User user = new User(1, "love", "1234", "love@nate.com", null, null);
 	request.setAttribute("user", user);
 	RequestDispatcher dis = request.getRequestDispatcher("jstlTest2.jsp?phone=0105555");
 	dis.forward(request, response);

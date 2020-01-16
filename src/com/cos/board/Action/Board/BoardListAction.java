@@ -20,7 +20,7 @@ public class BoardListAction implements Action{
 		// 2번. DAO 연결 - Select 전체 Board 데이터
 		BoardDao boardDao = BoardDao.getInstance();
 		List<Board> boards = boardDao.findAll();
-		
+			
 		//<request에 List<Board>담기>
 		req.setAttribute("boards", boards);
 		

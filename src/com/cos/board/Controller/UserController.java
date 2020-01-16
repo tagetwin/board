@@ -21,14 +21,12 @@ public class UserController extends HttpServlet{
 	}
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		//DB 테스트
-//		DBUtil.getConnection();
 		
 		req.setCharacterEncoding("utf-8");
 		resp.setContentType("text/html; charset=utf-8");
 		
 		String cmd = req.getParameter("cmd");
-		System.out.println("UserController:"+cmd);
+//		System.out.println("UserController:"+cmd);
 		Action action = UserFactory.route(cmd);
 		action.execute(req, resp);
 		

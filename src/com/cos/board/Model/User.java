@@ -10,7 +10,7 @@ import lombok.NoArgsConstructor;
 
 // model, vo(value object), bean(콩)
 //@Data                         // getter setter
-@AllArgsConstructor      // 전체 생성자
+@AllArgsConstructor     // 전체 생성자
 @NoArgsConstructor     // 빈 생성자
 @Builder
 @Getter

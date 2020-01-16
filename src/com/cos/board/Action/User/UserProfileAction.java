@@ -27,7 +27,7 @@ public class UserProfileAction implements Action {
 		User users = userDao.findById(id);
 		
 		if(users!=null) {
-			req.setAttribute("userss", users);
+			req.setAttribute("userProfile", users);
 			RequestDispatcher dis = req.getRequestDispatcher("/user/profile.jsp");
 			dis.forward(req, resp);	
 		}else {

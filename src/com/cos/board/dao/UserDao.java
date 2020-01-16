@@ -56,18 +56,19 @@ public class UserDao {
 		return -1;
 	}
 
-	public int update(String email, String address, int id) {
+	public int update(String password, String email, String address, int id) {
 		// 1. Stream 연결
 		Connection conn = DBUtil.getConnection();
 		PreparedStatement pstmt = null;
 		try {
 			// 2. 쿼리 전송 클래스 (규약에 맞게)
-			final String SQL = "UPDATE user SET email = ?, address = ? WHERE id = ?";
+			final String SQL = "UPDATE user SET password = ?, email = ?, address = ? WHERE id = ?";
 			pstmt = conn.prepareStatement(SQL);
 			// 3. SQL문 완성하기
-			pstmt.setString(1, email);
-			pstmt.setString(2, address);
-			pstmt.setInt(3, id);
+			pstmt.setString(1, password);
+			pstmt.setString(2, email);
+			pstmt.setString(3, address);
+			pstmt.setInt(4, id);
 			
 			// 4. SQL문 전송하기
 			//pstmt.executeQuery();

@@ -19,7 +19,7 @@ public class UserLoginProcAction implements Action {
 
 	@Override
 	public void execute(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		System.out.println("UserLoginProcAction");
+//		System.out.println("UserLoginProcAction");
 //		1. 파라메터 받기 (데이터)
 //		2. Post 요청이기 때문에 DB에 insert
 //		  (1) DAO 연결

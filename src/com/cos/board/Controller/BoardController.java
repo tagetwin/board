@@ -20,8 +20,6 @@ public class BoardController extends HttpServlet{
 	}
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		//DB 테스트
-//		DBUtil.getConnection();
 		
 		req.setCharacterEncoding("utf-8");
 		resp.setContentType("text/html; charset=utf-8");

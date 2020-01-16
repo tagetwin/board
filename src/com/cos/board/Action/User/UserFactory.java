@@ -5,7 +5,7 @@ import com.cos.board.Action.Action;
 public class UserFactory {
 
 	public static Action route (String cmd) {
-	System.out.println("UserFactory :" + cmd);
+//	System.out.println("UserFactory :" + cmd);
 		if(cmd.equals("logout")) {
 			return new UserLogoutAction();
 		}else if(cmd.equals("login")) {
