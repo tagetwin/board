@@ -234,6 +234,7 @@ public class UserDao {
 			if (rs.next()) {
 				int id = rs.getInt("ID");
 				String email = rs.getString("email");
+				String address = rs.getString("address");
 				Timestamp createTime = rs.getTimestamp("createTime");
 				 
 				// User Builder
@@ -242,7 +243,7 @@ public class UserDao {
 						.username(username)
 						.email(email)
 						.createTime(createTime)
-						.address("부산")
+						.address(address)
 						.build();
 			}
 			

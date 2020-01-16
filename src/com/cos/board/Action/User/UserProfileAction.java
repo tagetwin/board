@@ -24,10 +24,10 @@ public class UserProfileAction implements Action {
 		
 		int id = Integer.parseInt(req.getParameter("id"));
 		UserDao userDao = UserDao.getInstance();
-		User user = userDao.findById(id);
+		User users = userDao.findById(id);
 		
-		if(user!=null) {
-			req.setAttribute("user", user);
+		if(users!=null) {
+			req.setAttribute("userss", users);
 			RequestDispatcher dis = req.getRequestDispatcher("/user/profile.jsp");
 			dis.forward(req, resp);	
 		}else {

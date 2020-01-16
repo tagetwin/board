@@ -128,7 +128,7 @@ public class BoardDao {
 		ResultSet rs = null;
 		try {
 			// 2. 쿼리 전송 클래스 (규약에 맞게)
-//			final String SQL = "SELECT id, title, content, userId, createTime, %Y-%m-%d-%H-%i FROM board";
+//			final String SQL = "SELECT id, title, content, userId, date_format(createTime, '\''%Y.%m.%d %H:%i'\'') FROM board";
 			final String SQL = "SELECT * FROM board ORDER BY id DESC";
 			pstmt = conn.prepareStatement(SQL);
 			// 3. SQL문 완성하기
@@ -141,7 +141,7 @@ public class BoardDao {
 				String content = rs.getString("content");
 				int userId = rs.getInt("userId");
 				Timestamp createTime = rs.getTimestamp("createTime");
-
+				System.out.println(createTime);
 				Board board = Board.builder()
 						.id(id).title(title)
 						.content(content)
