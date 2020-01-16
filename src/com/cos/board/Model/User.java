@@ -2,63 +2,24 @@ package com.cos.board.Model;
 
 import java.sql.Timestamp;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+
 // model, vo(value object), bean(콩)
+//@Data                         // getter setter
+@AllArgsConstructor      // 전체 생성자
+@NoArgsConstructor     // 빈 생성자
+@Builder
+@Getter
 public class User {
 	private int id;
 	private String username;
 	private String password;
 	private String email;
+	private String address;
 	private Timestamp createTime;
-	
-	// All Constructor 값을 불러올수 없다.
-	public User(int id, String username, String password, String email, Timestamp createTime) {
-		this.id = id;
-		this.username = username;
-		this.password = password;
-		this.email = email;
-		this.createTime = createTime;
-	}
-
-	// Getter, Setter 값을 불러오기 힘들고
-	
-	public int getId() {
-		return id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
-	}
-
-	public String getUsername() {
-		return username;
-	}
-
-	public void setUsername(String username) {
-		this.username = username;
-	}
-
-	public String getPassword() {
-		return password;
-	}
-
-	public void setPassword(String password) {
-		this.password = password;
-	}
-
-	public String getEmail() {
-		return email;
-	}
-
-	public void setEmail(String email) {
-		this.email = email;
-	}
-
-	public Timestamp getCreateTime() {
-		return createTime;
-	}
-
-	public void setCreateTime(Timestamp createTime) {
-		this.createTime = createTime;
-	}
 	
 }

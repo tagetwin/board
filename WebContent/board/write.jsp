@@ -40,7 +40,7 @@
 
 <script>
 	$('#summernote').summernote({
-		placeholder : '"write"',
+		placeholder : '"Post Page"',
 		tabsize : 2,
 		height : 300
 	});

@@ -18,6 +18,8 @@ public class BoardFactory {
 			return new BoardWriteAction();
 		}else if (cmd.equals("writeProc")) {
 			return new BoardWriteProcAction();
+		}else if (cmd.equals("updateProc")) {
+			return new BoardUpdateProcAction();
 		}
 		return null;	
 	}

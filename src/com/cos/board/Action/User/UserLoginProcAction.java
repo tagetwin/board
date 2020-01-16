@@ -66,6 +66,7 @@ public class UserLoginProcAction implements Action {
 //		2-3,4
 		if (user != null) {
 			HttpSession session = req.getSession();
+			// session 변수명은 user > principal
 			session.setAttribute("user", user);
 			RequestDispatcher dis = req.getRequestDispatcher("/");
 			dis.forward(req, resp);

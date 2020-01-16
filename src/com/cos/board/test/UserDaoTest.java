@@ -128,7 +128,16 @@ public class UserDaoTest {
 				String email = rs.getString("email");
 				Timestamp createTime = rs.getTimestamp("createTime");
 				
-				User user = new User(id, username, password, email, createTime);
+				// User Builder
+				User user = User.builder()
+						.id(id)
+						.username(username)
+						.password(password)
+						.email(email)
+						.createTime(createTime)
+						.address("부산")
+						.build();
+				
 				users.add(user);
 			}
 			
@@ -169,8 +178,15 @@ public class UserDaoTest {
 				String email = rs.getString("email");
 				Timestamp createTime = rs.getTimestamp("createTime");
 				
-				 
-				user = new User(id, username, password, email, createTime);
+				// User Builder
+				user = User.builder()
+						.id(id)
+						.username(username)
+						.password(password)
+						.email(email)
+						.createTime(createTime)
+						.address("부산")
+						.build();
 			}
 			
 			return user;

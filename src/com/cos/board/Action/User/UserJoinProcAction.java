@@ -25,7 +25,8 @@ public class UserJoinProcAction implements Action {
 		if(
 				req.getParameter("username")== null ||
 				req.getParameter("password") == null ||
-				req.getParameter("email") == null
+				req.getParameter("email") == null ||
+				req.getParameter("address") == null 
 		) {
 			resp.sendRedirect("/");
 			return;
@@ -35,19 +36,22 @@ public class UserJoinProcAction implements Action {
 		String username = req.getParameter("username");
 		String password = req.getParameter("password");
 		String email = req.getParameter("email");
+		String address = req.getParameter("address");
 		
 		System.out.println("username: " + username);
 		System.out.println("password: " + password);
 		System.out.println("email: " + email);
+		System.out.println("address: " + address);
 
 //		2-1
 //		UserDao userdao = new UserDao(); 매번객체를 생성하는 것은 X
 		UserDao userDao = UserDao.getInstance();
 //		2-2
-		int result = userDao.save(username, password, email);
-		System.out.println(result);
+		int result = userDao.save(username, password, email, address);
+		
 //		2-3,4
 		if (result == 1) {
+			System.out.println("가입성공");
 			RequestDispatcher dis = req.getRequestDispatcher("/");
 			dis.forward(req, resp);
 			

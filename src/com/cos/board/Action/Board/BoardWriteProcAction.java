@@ -25,8 +25,8 @@ public class BoardWriteProcAction implements Action {
 				req.getParameter("content").equals("")
 		) {
 			Script.back(resp, "잘못된 접근입니다.");
-//			System.out.println(req.getParameter("title"));
-//			System.out.println(req.getParameter("content"));
+			System.out.println(req.getParameter("title"));
+			System.out.println(req.getParameter("content"));
 			return; // 두번이동하게되면 에러 forward
 		}
 		

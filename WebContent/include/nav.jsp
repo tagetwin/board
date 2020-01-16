@@ -39,7 +39,7 @@
 							href="/board?cmd=write">Post</a></li>
 
 						<li class="nav-item"><a class="nav-link"
-							href="/user?cmd=profile">Profile</a></li>
+							href="/user?cmd=profile&id=${sessionScope.user.id}">Profile</a></li>
 
 						<li class="nav-item"><a class="nav-link"
 							href="/user?cmd=logout">Logout</a></li>
