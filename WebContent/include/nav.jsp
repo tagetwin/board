@@ -31,7 +31,7 @@
 					<c:when test="${not empty sessionScope.user}">
 						<li class="nav-item"><a class="nav-link" href="/board?cmd=write">Post</a></li>
 
-						<li class="nav-item"><a class="nav-link" href="/user?cmd=profile&id=${sessionScope.user.id}">Profile</a></li>
+						<li class="nav-item"><a class="nav-link" href="/user?cmd=profile">Profile</a></li>
 
 						<li class="nav-item"><a class="nav-link" href="/user?cmd=logout">Logout</a></li>
 					</c:when>
@@ -40,7 +40,7 @@
 						<li class="nav-item"><a class="nav-link" href="/user?cmd=login">Login</a></li>
 					</c:otherwise>
 				</c:choose>
-				<li class="nav-item ml-auto"><a class="nav-link disabled" href="#">${user.username}</a></li>
+				<li class="nav-item ml-auto"><a class="nav-link disabled" href="#">${sessionScope.user.username}</a></li>
 			</ul>
 		</div>
 	</nav>

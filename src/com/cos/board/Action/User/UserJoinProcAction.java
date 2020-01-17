@@ -26,7 +26,11 @@ public class UserJoinProcAction implements Action {
 				req.getParameter("username")== null ||
 				req.getParameter("password") == null ||
 				req.getParameter("email") == null ||
-				req.getParameter("address") == null 
+				req.getParameter("address") == null ||
+				req.getParameter("username").equals("") ||
+				req.getParameter("password").equals("") ||
+				req.getParameter("email").equals("") ||
+				req.getParameter("address").equals("")
 		) {
 			resp.sendRedirect("/");
 			return;

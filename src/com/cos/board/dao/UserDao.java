@@ -262,4 +262,36 @@ public class UserDao {
 		}
 		return null;
 	}
+	
+	public int findByusername(String username) {
+		// 1. Stream 연결
+		Connection conn = DBUtil.getConnection();
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		try {
+			// 2. 쿼리 전송 클래스 (규약에 맞게)
+			final String SQL = "SELECT COUNT(*) FROM user WHERE username = ?";
+			pstmt = conn.prepareStatement(SQL);
+			// 3. SQL문 완성하기
+			pstmt.setString(1, username);
+			// 4. SQL문 전송하기
+			rs =pstmt.executeQuery();
+			
+			if (rs.next()) {
+				return rs.getInt(1);		
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				pstmt.close();
+				rs.close();
+				conn.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return -1;
+	}
 }

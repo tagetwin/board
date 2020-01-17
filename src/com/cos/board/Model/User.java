@@ -22,4 +22,9 @@ public class User {
 	private String address;
 	private Timestamp createTime;
 	
+//	public String getTitle() {
+//		title = title.replaceAll("<", "&lt;");
+//		title = title.replaceAll(">", "&gt;");
+//		return title;
+//	}
 }

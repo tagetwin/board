@@ -17,4 +17,15 @@ public class Script {
 		out.flush();
 		
 	}
+	
+public static void href (HttpServletResponse resp, String msg, String uri) throws IOException {
+		
+		PrintWriter out = resp.getWriter();
+		out.print("<script>");
+		out.print("alert('"+msg+"');");
+		out.print("location.href='"+uri+"'");
+		out.print("</script>");
+		out.flush();
+		
+	}
 }

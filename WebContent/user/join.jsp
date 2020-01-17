@@ -7,11 +7,11 @@
 	<div class="card">
 		<h5 class="card-header">Join</h5>
 		<div class="card-body">
-			<form action="/user?cmd=joinProc" method="POST">
+			<form action="/user?cmd=joinProc" method="POST" onsubmit="return validationCheck()">
 				<div class="form-group">
 					<label for="username">Username:</label>
-					<button type="button" class="btn btn-success float-right mb-2">중복확인</button>
-					<input type="text" class="form-control" placeholder="Enter Username" name="username" required="required" maxlength="20"/>
+					<button onclick="usernameCheck()" type="button" class="btn btn-success float-right mb-2">중복확인</button>
+					<input id="username" type="text" class="form-control" placeholder="Enter Username" name="username" required="required" maxlength="20"/>
 				</div>
 				<div class="form-group">
 					<label for="password">Password:</label>
