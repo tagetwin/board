@@ -8,7 +8,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.cos.board.Action.Action;
-import com.cos.board.util.Script;
 
 public class BoardWriteAction implements Action {
 

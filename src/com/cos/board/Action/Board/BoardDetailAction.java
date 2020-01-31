@@ -8,7 +8,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.cos.board.Action.Action;
-import com.cos.board.Model.Board;
 import com.cos.board.dao.BoardDao;
 import com.cos.board.util.Script;
 import com.cos.board.viewmodel.BoardUserVM;
@@ -31,7 +30,6 @@ public class BoardDetailAction implements Action {
 		BoardDao boardDao = BoardDao.getInstance();
 		BoardUserVM buVM = boardDao.findById(id);
 		
-//		System.out.println("DetailAction:"+buVM.toString());
 		if(buVM != null) {
 			req.setAttribute("buVM", buVM);
 			RequestDispatcher dis = req.getRequestDispatcher("/board/detail.jsp");

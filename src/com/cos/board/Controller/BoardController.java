@@ -10,7 +10,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.cos.board.Action.Action;
 import com.cos.board.Action.Board.BoardFactory;
-import com.cos.board.DB.DBUtil;
 
 @WebServlet("/board")
 public class BoardController extends HttpServlet{
@@ -25,6 +24,7 @@ public class BoardController extends HttpServlet{
 		resp.setContentType("text/html; charset=utf-8");
 		
 		String cmd = req.getParameter("cmd");
+		System.out.println(cmd);
 		if(cmd == null) cmd="";
 		Action action = BoardFactory.route(cmd);
 		action.execute(req, resp);

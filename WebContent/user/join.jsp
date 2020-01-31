@@ -7,7 +7,7 @@
 	<div class="card">
 		<h5 class="card-header">Join</h5>
 		<div class="card-body">
-			<form action="/user?cmd=joinProc" method="POST" onsubmit="return validationCheck()">
+			<form action="/blog/user?cmd=joinProc" method="POST" onsubmit="return validationCheck()">
 				<div class="form-group">
 					<label for="username">Username:</label>
 					<button onclick="usernameCheck()" type="button" class="btn btn-success float-right mb-2">중복확인</button>
@@ -34,6 +34,6 @@
 	</div>
 </div>
 
-<script src="/js/join.js"></script>
+<script src="js/join.js"></script>
 
 <%@ include file="../include/footer.jsp"%>

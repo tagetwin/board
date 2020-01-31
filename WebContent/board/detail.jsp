@@ -11,10 +11,10 @@
 		<div class="d-flex align-items-center">
 		<!-- JSTL을 이용해서 세션의 user.id와 buVM.board.userId -->
 			<c:if test="${sessionScope.user.id eq buVM.board.userId}">
-			<a href="/board?cmd=update&id=${buVM.board.id}&userId=${buVM.board.userId}" class="btn btn-info">수정</a>&nbsp;
+			<a href="/blog/board?cmd=update&id=${buVM.board.id}&userId=${buVM.board.userId}" class="btn btn-info">수정</a>&nbsp;
 			<button id="delete" type="button" class="btn btn-danger">삭제</button>&nbsp;
 			</c:if>
-			<a href="/" class = "btn btn-primary">목록</a>
+			<a href="/blog/" class = "btn btn-primary">목록</a>
 			<span id="username" class="ml-auto">${buVM.user.username}</span>
 		</div>
 		<hr />
@@ -24,7 +24,7 @@
 	</div>
 </div>
 
-<form id="deleteForm" action="/board?cmd=delete" method="POST">
+<form id="deleteForm" action="/blog/board?cmd=delete" method="POST">
 	<input type="hidden" name="id" value="${buVM.board.id}"/>
 	<input type="hidden" name="userId" value="${buVM.board.userId}"/>
 	

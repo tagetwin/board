@@ -36,8 +36,7 @@ public class BoardDeleteAction implements Action {
 		System.out.println("삭제성공");
 		
 		if(result==1) {
-			RequestDispatcher dis = req.getRequestDispatcher("/");
-			dis.forward(req, resp);
+			resp.sendRedirect("/blog");
 			
 		}else {
 			Script.back(resp, "삭제 실패하였습니다.");

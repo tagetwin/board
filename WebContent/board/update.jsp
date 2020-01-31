@@ -16,7 +16,7 @@
 	<div class="card">
 		<h5 class="card-header">Post</h5>
 		<div class="card-body">
-			<form action="/board?cmd=updateProc" method="POST">
+			<form action="/blog/board?cmd=updateProc" method="POST">
 				<input type="hidden" name="id" value="${buVM.board.id}"/>
 				<input type="hidden" name="userId" value="${buVM.board.userId}"/>
 				<div class="form-group">

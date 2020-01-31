@@ -43,7 +43,7 @@ public class UserProfileProcAction implements Action {
 			HttpSession session = req.getSession();
 			session.setAttribute("user", principal);
 			
-			Script.href(resp, "회원정보 수정 완료", "/user?cmd=profile");
+			Script.href(resp, "회원정보 수정 완료", "/blog/user?cmd=profile"); 
 		} else {
 			Script.back(resp, "회원정보 수정에 실패하였습니다.");
 		}

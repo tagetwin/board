@@ -20,7 +20,7 @@
 	<div class="card">
 		<h5 class="card-header">Post</h5>
 		<div class="card-body">
-			<form action="/board?cmd=writeProc" method="POST">
+			<form action="/blog/board?cmd=writeProc" method="POST">
 				<div class="form-group">
 					<label for="Title">Title:</label> <input type="text"
 						class="form-control" placeholder="Enter Title" name="title"

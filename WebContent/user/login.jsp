@@ -21,7 +21,7 @@
 	<div class="card">
 		<h5 class="card-header">Login</h5>
 		<div class="card-body">
-			<form action="/user?cmd=loginProc" method="post">
+			<form action="/blog/user?cmd=loginProc" method="post">
 				<div class="form-group">
 					<label for="username">Username</label>
 					<input type="text" value="${cookie.usernameCookie.value}" class="form-control" placeholder="Enter Username" name="username" required="required"	maxlength="20" />

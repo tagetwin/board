@@ -18,7 +18,7 @@ function usernameCheck() {
 
 	$.ajax({
 		type : "POST",
-		url : "/user?cmd=usernameCheck",
+		url : "/blog/user?cmd=usernameCheck",
 		dataType : "text",
 		contentType : "application/json",
 		data : JSON.stringify(user),
@@ -47,7 +47,7 @@ function validationCheck() {
 
 
 function goPopup() {
-	var pop = window.open("/user/jusoPopup.jsp", "pop",
+	var pop = window.open("/blog/user/jusoPopup.jsp", "pop",
 			"width=570,height=420, scrollbars=yes, resizable=yes");
 }
 

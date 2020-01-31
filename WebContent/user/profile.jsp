@@ -7,7 +7,7 @@
 	<div class="card">
 		<h5 class="card-header">Profile</h5>
 		<div class="card-body">
-			<form action="/user?cmd=profileProc" method="POST">
+			<form action="/blog/user?cmd=profileProc" method="POST">
 				<div class="form-group">
 					<label for="username">Username:</label>
 					<input type="text" class="form-control" required="required" maxlength="20" value="${sessionScope.user.username}" readonly="readonly"/>
@@ -33,6 +33,6 @@
 	</div>
 </div>
 
-<script src="/js/join.js"></script>
+<script src="js/join.js"></script>
 
 <%@ include file="../include/footer.jsp"%>

@@ -9,9 +9,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.cos.board.Action.Action;
-import com.cos.board.Action.Board.BoardFactory;
 import com.cos.board.Action.User.UserFactory;
-import com.cos.board.DB.DBUtil;
+
 
 @WebServlet("/user")
 public class UserController extends HttpServlet{
@@ -26,7 +25,7 @@ public class UserController extends HttpServlet{
 		resp.setContentType("text/html; charset=utf-8");
 		
 		String cmd = req.getParameter("cmd");
-//		System.out.println("UserController:"+cmd);
+		System.out.println("UserController:"+cmd);
 		Action action = UserFactory.route(cmd);
 		action.execute(req, resp);
 		
